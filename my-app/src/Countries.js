@@ -24,11 +24,11 @@ function Countries() {
     }, [])
     const regions = ['All', ...new Set(countries.map(country => country.region))]
 
-    const filteredCountries = selectedRegion === "All"
+    let filteredCountries = selectedRegion === "All"
         ? countries
-        : countries.filter(country => country.region === selectedRegion)
-    filteredCountries = filteredCountries.filter(country => country.name.common.toLowerCase().includes(searchValue.toLowerCase()))
+        : countries.filter(country => country.region === selectedRegion);
 
+    filteredCountries = filteredCountries.filter(country => country.name.common.toLowerCase().includes(searchValue.toLowerCase()))
     return (
         <div>
             <h2>Countries and Capitals</h2>
@@ -54,7 +54,7 @@ function Countries() {
                 {filteredCountries.length !== 0 ? (
                     filteredCountries.map((country, index) => (
                         <li className='column' key={index}><div>{country.flag}</div><div className='leftColumn'>{country.name.common}</div><div className='middleColumn'>{country.capital ? country.capital[0] : '-'}</div><div className='rightColumn'>{country.region}</div></li>
-                    ))) : ''
+                    ))) : 'No country has been found'
                 }
             </ul>
         </div >
