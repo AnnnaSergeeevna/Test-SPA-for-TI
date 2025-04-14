@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Countries.css';
 import Search from './Search';
+import { Link } from 'react-router-dom';
 
 function Countries() {
     const [countries, setCountries] = useState([]);
@@ -51,9 +52,27 @@ function Countries() {
             <button className='resetButton' onClick={() => setSelectedRegion("All") || setSearchValue('')}>Reset</button>
             <Search value={searchValue} onChange={setSearchValue} />
             <ul>
+                <li className='column header'>
+                    <div className='flag'>. . .</div>
+                    <div className='leftColumn'><select className="selectSort">
+                        <option value="alphabet">(A-Z)</option>
+                    </select>
+                    </div>
+                    <div className='middleColumn'><select className="selectSort">
+                        <option value="alphabet">(A-Z)</option>
+                    </select></div>
+                    <div className='rightColumn'><select className="selectSort">
+                        <option value="alphabet">(A-Z)</option>
+                    </select></div>
+                </li>
                 {filteredCountries.length !== 0 ? (
                     filteredCountries.map((country, index) => (
-                        <li className='column' key={index}><div>{country.flag}</div><div className='leftColumn'>{country.name.common}</div><div className='middleColumn'>{country.capital ? country.capital[0] : '-'}</div><div className='rightColumn'>{country.region}</div></li>
+                        <li className='column' key={index}>
+                            <div className='flag'>{country.flag}</div>
+                            <Link className='leftColumn' to={`/country/${country.name.common}`}>{country.name.common}</Link>
+                            <div className='middleColumn'>{country.capital ? country.capital[0] : '-'}</div>
+                            <div className='rightColumn'>{country.region}</div>
+                        </li>
                     ))) : 'No country has been found'
                 }
             </ul>

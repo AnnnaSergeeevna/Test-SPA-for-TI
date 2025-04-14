@@ -1,11 +1,15 @@
-.column {
+.column,
+.columnHeader {
     list-style-type: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid white;
     border-top: 1px solid white;
+}
 
+.flag {
+    background-color: rgb(143, 143, 143);
 }
 
 .leftColumn {
@@ -13,12 +17,17 @@
     margin-left: 15px;
     width: 650px;
     align-items: start;
+    color: aliceblue;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .middleColumn {
     display: flex;
     margin-left: 15px;
     width: 550px;
+    justify-content: center;
+    background-color: rgb(143, 143, 143);
 }
 
 .rightColumn {
