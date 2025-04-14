@@ -27,8 +27,8 @@ function Countries() {
     let filteredCountries = selectedRegion === "All"
         ? countries
         : countries.filter(country => country.region === selectedRegion);
-
     filteredCountries = filteredCountries.filter(country => country.name.common.toLowerCase().includes(searchValue.toLowerCase()))
+
     return (
         <div>
             <h2>Countries and Capitals</h2>
@@ -48,7 +48,7 @@ function Countries() {
                 )}
             </select>
             <span className='chooseReg'>Total: {filteredCountries.length}</span>
-            <button className='resetButton' onClick={() => setSelectedRegion("All")}>Reset</button>
+            <button className='resetButton' onClick={() => setSelectedRegion("All") || setSearchValue('')}>Reset</button>
             <Search value={searchValue} onChange={setSearchValue} />
             <ul>
                 {filteredCountries.length !== 0 ? (
